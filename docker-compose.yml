@@ -1,8 +1,7 @@
 version: "3"
 services:
   scaap:
-    build:
-      context: .
+    image: ghcr.io/ecyshor/scaap:latest
     ports:
       - "3030:3030"
     volumes:
