@@ -1,0 +1,9 @@
+version: "3"
+services:
+  scaap:
+    build:
+      context: .
+    ports:
+      - "3030:3030"
+    volumes:
+      - ./sample:/etc/config/:ro

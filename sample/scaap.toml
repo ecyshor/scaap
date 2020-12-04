@@ -1,0 +1,3 @@
+[[script]]
+name = "test"
+command = "/etc/config/test.sh"
