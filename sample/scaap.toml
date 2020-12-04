@@ -1,3 +1,8 @@
 [[script]]
 name = "test"
-command = "/etc/config/test.sh"
+command = "/etc/scaap/test.sh"
+arguments = []
+[[script]]
+name = "test-python"
+command = "python3"
+arguments = ["/etc/scaap/hello.py", "install"]

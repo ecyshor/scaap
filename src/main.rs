@@ -7,6 +7,7 @@ use warp::{Filter, http::Response};
 #[derive(Deserialize, Clone)]
 struct ConfiguredScript {
     command: String,
+    arguments: Vec<String>,
     name: String,
 }
 
@@ -23,7 +24,7 @@ impl ScappConfig {
 
 #[tokio::main]
 async fn main() {
-    let read_config = fs::read_to_string("/etc/config/scaap.toml").unwrap();
+    let read_config = fs::read_to_string("/etc/scaap/scaap.toml").unwrap();
     let parsed_config = toml::from_str(&read_config);
     let scapp_config: ScappConfig = parsed_config.unwrap();
     let scripts = scapp_config.clone();
@@ -43,6 +44,9 @@ async fn main() {
 
 fn execute_script(name: String, config: ScappConfig) -> Option<io::Result<Output>> {
     let configured_script = config.config_for_name(name);
-    configured_script.map(|script| Command::new(&script.command)
-        .output())
+    configured_script.map(|script| {
+        Command::new(&script.command)
+            .args(&script.arguments)
+            .output()
+    })
 }

@@ -1,8 +1,8 @@
 version: "3"
 services:
   scaap:
-    image: ghcr.io/ecyshor/scaap:latest
+    build: .
     ports:
       - "3030:3030"
     volumes:
-      - ./sample:/etc/config/:ro
+      - ./sample:/etc/scaap/:ro
