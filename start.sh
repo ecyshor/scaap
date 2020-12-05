@@ -8,4 +8,4 @@ if test -f "/etc/scaap/init-runtime.sh"; then
   /etc/scaap/init-runtime.sh
 fi
 echo "Starting scaap"
-exec "$@"
+exec "/etc/scaap-app/scaap"
